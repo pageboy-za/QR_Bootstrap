@@ -8,9 +8,7 @@
   <link rel="stylesheet" href="css/bootstrap-responsive.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/libs/jquery-1.9.1.js"></script>
-   <script src="js/libs/qrcode.js"></script>
-   
-     
+  <script src="js/libs/qrcode.js"></script>     
 </head>
 
 <body>
@@ -55,7 +53,7 @@
   	
   	<div id="errorSpace" class="alert alert-error fade in" style="display: none; width:500px" ><button type="button" class="close" data-dismiss="alert"> &times;</button><span><strong>No Value Entered!</strong><span> Please enter a value in the text box</span></div>
     
-    <br>
+    <br><hr>
     <!-- /Error Alert-->
   	<form class="form-horizontal">
   	<div class="control-group">
@@ -63,13 +61,11 @@
     <div class="controls">
       <input type="text" id="inputUrl" placeholder="e.g. http://www.citi.com/" >
     </div>
-    
-		<br>
-		<br>
 		<p>
 		<button type="submit" class="btn btn-primary" onclick="makeQRCode();"> <i class="icon-qrcode icon-white"></i> Generate</button>
 		</p>
 	</form>
+	<hr>
   	</div>
   	
   	
@@ -101,14 +97,13 @@ var qr = new QRCode(document.getElementById("qr"),{
 function makeQRCode(){
 var QRText = document.getElementById("inputUrl").value;  //set the string variable
 
-	console.log('QRtext ='+QRText)
+	console.log('QRtext = '+ QRText)
 	
-	var qrString = QRText;
+	var qrString = QRText; //set the text to encode (allowing for future work with encoding more complex structures like VCARD's
 	
 	console.log(qrString);
 	
 	if(!qrString) {
-		//alert("please enter a value");
 		$("#errorSpace").show();
 		console.log("variable empty");
 		document.getElementById("inputUrl").focus();
