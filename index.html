@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>QR Code Generator</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<!--top navigation section-->
+  <script type="text/x-handlebars">
+    <div class="navbar-wrapper">
+      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+      <div class="container">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            {{#linkTo 'start' class="brand"}} QRCode Generator{{/linkTo}}
+            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+              <li class="divider-vertical"></li>
+                <li> {{#linkTo 'url'}}<i class="icon-globe"></i> URL{{/linkTo}}</li>
+                <li class="divider-vertical"></li>
+                <li>{{#linkTo 'VCARD'}}<i class="icon-user"></i> VCard{{/linkTo}}</li>
+                <li class="divider-vertical"></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
+    {{outlet}}  	
+  </script>
+  
+<!-Start Section-->
+  <script type="text/x-handlebars" id="start">
+  	<div class="start">
+  		<p class="lead span10"> Use this tool to generate a QR code to down load as an image, this can then be included in your email signature, documents or on a webpage webpage.  
+  			<br>
+  		Select whether or not you want to encode a website URL or create a VCard for your contact details.  
+  		</p>
+  	</div>
+  </script>
+  
+<!-URL Form Section-->  
+  <script type="text/x-handlebars" id="url">
+  	<div id="urlForm" class="span12">
+  	<form class="form-horizontal">
+  	<div class="control-group">
+    <label class="control-label" for="inputUrl">Enter the URL</label>
+    <div class="controls">
+      <input type="text" id="inputUrl" placeholder="http://www.…">
+    </div>
+		<br>
+		<button type="submit" class="btn btn-primary" {{action 'generateQR/URL'}}> <i class="icon-qrcode icon-white"></i> Generate</button>
+	</form>
+	{{outlet}}
+  	</div>
+  </script>
+  
+  
+<!-VCard Form Section-->
+<script type="text/x-handlebars" id="VCARD">
+  	<div id="VCardForm" class="span11">
+  	<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputName">Name</label>
+    <div class="controls">
+      <input type="text" id="inputName" placeholder="Name">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputSurname">Surname</label>
+    <div class="controls">
+      <input type="text" id="inputSurname" placeholder="Surname">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+      <input type="email" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputWrkTel">Work Telephone Number</label>
+    <div class="controls">
+      <input type="tel" id="inputWrkTel" placeholder="Work Telephone">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputMobile">Mobile Phone</label>
+    <div class="controls">
+      <input type="tel" id="inputMobile" placeholder="Mobile Phone Number">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputTwitter">Twitter Handle</label>
+    <div class="controls">
+      <input type="text" id="inputTwitter" placeholder="@TwiiterHandle">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputAddress">Address</label>
+    <div class="controls">
+      <input type="text" id="inputAddress" placeholder="Enter Your Address">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputWebAdd">Web Site Address</label>
+    <div class="controls">
+      <input type="text" id="inputWebAdd" placeholder="http://www. …">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" {{action 'generateQR '}}><i class="icon-qrcode icon-white"></i> Generate</button>
+    </div>
+  </div>
+</form>
+	{{outlet}}
+  	</div>
+  </script>
+
+<!--QRCode Plane
+<script type="text/x-handlebars" id="qrCode">
+	<div class="qrcode">
+{{outlet}}		
+	</div>
+
+</script>-->
+
+
+  <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/bootstrap.js"></script>
+  <script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
+  <script src="js/libs/ember-1.0.0-rc.2.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/qrcode.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

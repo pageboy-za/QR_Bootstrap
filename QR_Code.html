@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>QR Code Generator</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/libs/jquery-1.9.1.js"></script>
+   <script src="js/libs/qrcode.js"></script>
+   
+     
+</head>
+
+<body>
+<!--top navigation section-->
+    <div class="navbar-wrapper">
+      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+      <div class="container">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href"#" class="brand">QRCode Generator</a>
+            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+              <li class="divider-vertical"></li>
+                <li> <a href="#"><i class="icon-globe"></i> URL</li></a>
+                <li class="divider-vertical"></li>
+                <li><a href="#"><i class="icon-user"></i> VCard</li></a>
+                <li class="divider-vertical"></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
+    
+    <div class="start">
+  		<p class="lead span10"> Use this tool to generate a QR code to down load as an image, this can then be included in your email signature, documents or on a webpage webpage.  
+  			<br>
+  		Select whether or not you want to encode a website URL or create a VCard for your contact details.  
+  		</p>
+  	</div>
+  
+  
+  <div id="urlForm" class="span8">
+  <!--Error Alert-->
+  	
+  	<div id="errorSpace" class="alert alert-error fade in" style="display: none; width:500px" ><button type="button" class="close" data-dismiss="alert"> &times;</button><span><strong>No Value Entered!</strong><span> Please enter a value in the text box</span></div>
+    
+    <br>
+    <!-- /Error Alert-->
+  	<form class="form-horizontal">
+  	<div class="control-group">
+    <label class="control-label" for="inputUrl">Enter the URL</label>
+    <div class="controls">
+      <input type="text" id="inputUrl" placeholder="e.g. http://www.citi.com/" >
+    </div>
+    
+		<br>
+		<br>
+		<p>
+		<button type="submit" class="btn btn-primary" onclick="makeQRCode();"> <i class="icon-qrcode icon-white"></i> Generate</button>
+		</p>
+	</form>
+  	</div>
+  	
+  	
+  	
+  	
+<!-- Modal Box-->
+<div class="modal hide fade" id="QRModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>QR Code</h3>
+  </div>
+  <div  class="modal-body">
+    <p>Your QR Code is printed below</p>
+    <div id="qr" class="img-polaroid" style="width:350px; height:350px; margin-top:10px; margin-bottom:10px;"></div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" onclick="javascript:$('#QRModal').modal('hide')">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
+<!-- /Modal Box-->
+<script type="text/javascript">
+
+var qr = new QRCode(document.getElementById("qr"),{
+	width : 350,
+	height : 350,
+});
+
+function makeQRCode(){
+var QRText = document.getElementById("inputUrl").value;  //set the string variable
+
+	console.log('QRtext ='+QRText)
+	
+	var qrString = QRText;
+	
+	console.log(qrString);
+	
+	if(!qrString) {
+		//alert("please enter a value");
+		$("#errorSpace").show();
+		console.log("variable empty");
+		document.getElementById("inputUrl").focus();
+		//return;
+	}
+	else {
+		$("#errorSpace").hide();
+		$('#QRModal').modal('show');
+		console.log ("this is the value of qrString: "+ qrString);
+		qr.makeCode(qrString);
+	}
+		};
+
+</script>
+
+<script src="js/libs/bootstrap.js"></script>
+ 
+
+</body>
+</html>
+<!-VCard Form Section-->
+
+  	<div id="VCardForm" class="span8" style="visibility: hidden;">
+  	<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputName">Name</label>
+    <div class="controls">
+      <input type="text" id="inputName" placeholder="Name">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputSurname">Surname</label>
+    <div class="controls">
+      <input type="text" id="inputSurname" placeholder="Surname">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+      <input type="email" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputWrkTel">Work Telephone Number</label>
+    <div class="controls">
+      <input type="tel" id="inputWrkTel" placeholder="Work Telephone">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputMobile">Mobile Phone</label>
+    <div class="controls">
+      <input type="tel" id="inputMobile" placeholder="Mobile Phone Number">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputTwitter">Twitter Handle</label>
+    <div class="controls">
+      <input type="text" id="inputTwitter" placeholder="@TwiiterHandle">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputAddress">Address</label>
+    <div class="controls">
+      <input type="text" id="inputAddress" placeholder="Enter Your Address">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputWebAdd">Web Site Address</label>
+    <div class="controls">
+      <input type="text" id="inputWebAdd" placeholder="http://www. …">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" ><i class="icon-qrcode icon-white"></i> Generate</button>
+    </div>
+  </div>
+</form>
+  	</div>
+

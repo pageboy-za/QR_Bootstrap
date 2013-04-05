@@ -1,0 +1,18 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Page;Nealle;;;
+FN:Nealle Page
+ORG:Citigroup;
+TITLE:Vice President
+EMAIL;type=INTERNET;type=HOME:nealle.page@gmail.com
+EMAIL;type=INTERNET;type=HOME:nealle.page@me.com
+TEL;type=HOME;type=VOICE;type=pref:+44 1780 749186
+TEL;type=WORK;type=VOICE:+44 20 7986 7393
+TEL;type=IPHONE;type=CELL;type=VOICE:+44 7590 029708
+X-SOCIALPROFILE;type=twitter;x-userid=45414910:http://twitter.com/pageboy_za
+item2.URL;type=pref:http://sites.google.com/site/neallepage
+item2.X-ABLabel:_$!<HomePage>!$_
+BDAY;X-APPLE-OMIT-YEAR=1604:1604-05-24
+UID:E1653DD4-BABC-4A44-BB05-E72E9DEE9F0B
+X-ABUID:3F463582-7F02-476D-B689-12A4025AC307:ABPerson
+END:VCARD
