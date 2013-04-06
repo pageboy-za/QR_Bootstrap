@@ -51,11 +51,13 @@
   <div id="urlForm" class="span8">
   <!--Error Alert-->
   	
-  	<div id="errorSpace" class="alert alert-error fade in" style="display: none; width:500px" ><button type="button" class="close" data-dismiss="alert"> &times;</button>
-  	<span><strong>No Value Entered!</strong><span> Please enter a value in the text box</span></div>
-    
-    <br><hr>
+  	<div id="errorSpace" class="alert alert-error fade in" style="display: none; width:500px" >
+  	<!--<button type="button" class="close" data-dismiss="alert"> &times;</button>-->
+  		<span><strong>No Value Entered!</strong><span> Please enter a value in the text box</span>	
+  	</div>
+    <hr>
     <!-- /Error Alert-->
+    <!--URL Form-->
   	<form class="form-horizontal">
   	<div class="control-group">
     <label class="control-label" for="inputUrl">Enter the URL</label>
@@ -68,10 +70,8 @@
 	</form>
 	<hr>
   	</div>
-  	
-  	
-  	
-  	
+  	<!--/URL Form-->
+  		
 <!-- Modal Box-->
 <div class="modal hide fade" id="QRModal">
   <div class="modal-header">
@@ -108,7 +108,7 @@ var QRText = document.getElementById("inputUrl").value;  //set the string variab
 		$("#errorSpace").show();
 		console.log("variable empty");
 		document.getElementById("inputUrl").focus();
-		//return;
+		return;
 	}
 	else {
 		$("#errorSpace").hide();
