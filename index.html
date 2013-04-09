@@ -54,6 +54,14 @@
 <!-URL Form Section-->  
   <script type="text/x-handlebars" id="url">
   	<div id="urlForm" class="span12">
+  	 <!--Error Alert-->
+  	
+  	<div id="errorSpace" class="alert alert-error fade in" style="display: none; width:500px" >
+  	<!--<button type="button" class="close" data-dismiss="alert"> &times;</button>-->
+  		<span><strong>No Value Entered!</strong><span> Please enter a value in the text box</span>	
+  	</div>
+    <hr>
+
   	<form class="form-horizontal">
   	<div class="control-group">
     <label class="control-label" for="inputUrl">Enter the URL</label>
@@ -61,7 +69,7 @@
       <input type="text" id="inputUrl" placeholder="http://www.…">
     </div>
 		<br>
-		<button type="submit" class="btn btn-primary" {{action 'generateQR/URL'}}> <i class="icon-qrcode icon-white"></i> Generate</button>
+		<button type="submit" class="btn btn-primary" onclick"makeQRCode();"> <i class="icon-qrcode icon-white"></i> Generate</button>
 	</form>
 	{{outlet}}
   	</div>
@@ -135,15 +143,63 @@
 	</div>
 
 </script>-->
+<!-- Modal Box-->
+<div class="modal hide fade" id="QRModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>QR Code</h3>
+  </div>
+  <div  class="modal-body">
+    <p>Your QR Code is printed below</p>
+    <div id="qr" class="img-polaroid" style="width:350px; height:350px; margin-top:10px; margin-bottom:10px;"></div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" onclick="javascript:$('#QRModal').modal('hide')">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
+<!-- /Modal Box-->
 
-
+ 
   <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/qrcode.js"></script>
   <script src="js/libs/bootstrap.js"></script>
   <script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
   <script src="js/libs/ember-1.0.0-rc.2.js"></script>
   <script src="js/libs/ember-data.js"></script>
-  <script src="js/libs/qrcode.js"></script>
+ 
   <script src="js/app.js"></script>
+<script type="text/javascript">
+
+var qr = new QRCode(document.getElementById("qr"),{
+	width : 350,
+	height : 350,
+});
+
+function makeQRCode(){
+var QRText = document.getElementById("inputUrl").value;  //set the string variable
+
+	console.log('QRtext = '+ QRText)
+	
+	var qrString = QRText; //set the text to encode (allowing for future work with encoding more complex structures like VCARD's
+	
+	console.log(qrString);
+	
+	if(!qrString) {
+		$("#errorSpace").show();
+		console.log("variable empty");
+		document.getElementById("inputUrl").focus();
+		return;
+	}
+	else {
+		$("#errorSpace").hide();
+		$('#QRModal').modal('show');
+		console.log ("this is the value of qrString: "+ qrString);
+		qr.makeCode(qrString);
+	}
+		};
+
+</script>
 
 </body>
 </html>
