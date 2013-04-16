@@ -39,25 +39,26 @@
         </div><!-- /.navbar -->
       </div> <!-- /.container -->
     </div><!-- /.navbar-wrapper -->
-    
-    <div class="start">
-  		<p class="lead span10"> Use this tool to generate a QR code to down load as an image, this can then be included in your email signature, documents or on a webpage webpage.  
+    <div class="row-fluid">
+    <div class="start span10 offset1">
+  		<p class="lead"> Use this tool to generate a QR code to down load as an image, this can then be included in your email signature, documents or on a webpage webpage.  
   			<br>
   		Select whether or not you want to encode a website URL or create a VCard for your contact details.  
   		</p>
   	</div>
   
-  
-  <div id="urlForm" class="span8">
+  <div class="container">
+  <div id="urlForm" class="span10 offset1">
   <!--Error Alert-->
   	
   	<div id="errorSpace" class="alert alert-error fade in" style="display: none; width:500px" >
   	<!--<button type="button" class="close" data-dismiss="alert"> &times;</button>-->
   		<span><strong>No Value Entered!</strong><span> Please enter a value in the text box</span>	
-  	</div>
+  	</div><!-- /Error Alert-->
     <hr>
-    <!-- /Error Alert-->
+    
     <!--URL Form-->
+   
   	<form class="form-horizontal">
   	<div class="control-group">
     <label class="control-label" for="inputUrl">Enter the URL</label>
@@ -65,10 +66,13 @@
       <input type="text" id="inputUrl" placeholder="e.g. http://www.URL.com/" >
     </div>
 		<p>
+		<div class="span10 offset1">
 		<button type="submit" class="btn btn-primary" onclick="makeQRCode();"> <i class="icon-qrcode icon-white"></i> Generate</button>
+		</div>
 		</p>
 	</form>
 	<hr>
+  	</div>
   	</div>
   	<!--/URL Form-->
   		
